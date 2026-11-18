@@ -1,0 +1,9 @@
+{
+  "name": "ফুলচিত্র (Phulchitra) Studio Archive",
+  "short_name": "ফুলচিত্র",
+  "description": "প্রাইভেট আর্ট আর্কাইভ ও ডিজিটাল স্টুডিও",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6F3EC",
+  "theme_color": "#8C4A32"
+}

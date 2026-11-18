@@ -1,0 +1,46 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model StudioConfig {
+  id           String   @id @default("singleton")
+  studioName   String   @default("ফুলচিত্র")
+  curatorName  String   @default("স্টুডিও আর্কাইভ")
+  curatorBio   String   @default("আমাদের একান্ত শিল্প ও স্কেচবুক আর্কাইভ।")
+  theme        String   @default("paper")
+  passwordHash String
+  updatedAt    DateTime @updatedAt
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  artworks    Artwork[]
+}
+
+model Artwork {
+  id           String      @id @default(cuid())
+  title        String
+  year         String
+  medium       String
+  dimensions   String?
+  status       String      @default("Finished")
+  imagePath    String?
+  svgKey       String?
+  privateNotes String?
+  tags         String      @default("")
+  favorite     Boolean     @default(false)
+  trashed      Boolean     @default(false)
+  collectionId String?
+  collection   Collection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
