@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "db:push": "prisma db push",
-    "db:seed": "npx tsx prisma/seed.ts"
-  },
+  "dev": "next dev",
+  "build": "prisma generate && next build",
+  "start": "next start",
+  "db:push": "prisma db push",
+  "db:seed": "npx tsx prisma/seed.ts",
+  "postinstall": "prisma generate"
+},
   "dependencies": {
     "@prisma/client": "^6.0.0",
     "bcryptjs": "^2.4.3",
